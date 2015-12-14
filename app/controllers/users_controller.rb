@@ -11,6 +11,7 @@ class UsersController < ApplicationController
       flash[:notice] = "Logged in as #{@user.username}"
       redirect_to dashboard_path
     else
+      # can remove the flash messages, use in view as a partial (refactor)
       flash.now[:error] = @user.errors.full_messages.join(', ')
       render :new
     end

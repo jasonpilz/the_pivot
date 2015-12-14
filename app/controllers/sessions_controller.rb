@@ -13,9 +13,10 @@ class SessionsController < ApplicationController
     end
   end
 
-
   def destroy
+    # refactor - don't want to clear the whole session, just the user
     session.clear
+    session.delete(:user_id)
     redirect_to root_path
   end
 

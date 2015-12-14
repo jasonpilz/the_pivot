@@ -23,6 +23,7 @@ class Stores::OrdersController < ApplicationController
   end
 
   private
+  # Best to put in the helpers directory*****
 
     def ordered_status
       current_store.orders.where(status: "Ordered").count

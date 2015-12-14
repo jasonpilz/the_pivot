@@ -3,7 +3,7 @@ class StoresController < ApplicationController
     @stores = Store.where(status: "accepted")
   end
 
-  def show  
+  def show
     @store = Store.find_by(slug: params[:store])
     render layout: 'wide'
   end
@@ -15,6 +15,7 @@ class StoresController < ApplicationController
   def create
     @store = Store.new(store_params)
     if @store.save
+      # use current_user.build_store instead of explicitly assigning store_id
       current_user.update(store_id: @store.id)
       flash[:notice] = "#{current_user.first_name} you have submitted business #{@store.name}. Please wait while we review your business"
       redirect_to dashboard_path

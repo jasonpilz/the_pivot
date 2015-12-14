@@ -45,6 +45,8 @@ class UserCanPlaceAnOrderTest < ActionDispatch::IntegrationTest
     assert page.has_content?("Order was successfully placed")
     assert page.has_content?("Cart (0)")
 
+    # Refactor - visit user dashboard and assert order was in there
+
     visit "/cart"
     click_button "Place Order"
     fill_in "Address", with: "1 Street"
